@@ -1,172 +1,190 @@
 <h1 *ngIf="addMode" class="text-center p-1 my-2">Add Product</h1>
 <h1 *ngIf="!addMode" class="text-center p-1 my-2">Edit Product</h1>
-
-<form class="row g-3" [formGroup]="form" (ngSubmit)="onSubmit(form)">
-  <!-- title -->
-  <div class="col-12">
-    <label for="title" class="form-label">Title</label>
-    <input
-      type="text"
-      class="form-control"
-      formControlName="title"
-      id="title"
-      [(ngModel)]="product.title"
-    />
-  </div>
-  <!-- invalid title -->
-  <div
-    *ngIf="form.get('title')?.errors && form.get('title')?.touched && addMode"
-    class="form-text"
-  >
-    <p *ngIf="form.get('title')?.getError('required')" class="text-danger p-0">
-      Required
-    </p>
-  </div>
-  <!-- price -->
-  <div class="col-12">
-    <label for="Price" class="form-label">Price</label>
-    <input
-      type="number"
-      class="form-control"
-      formControlName="price"
-      id="Price"
-      [(ngModel)]="product.price"
-    />
-  </div>
-  <!-- invalid price -->
-  <div
-    *ngIf="form.get('price')?.errors && form.get('price')?.touched && addMode"
-    class="form-text"
-  >
-    <p *ngIf="form.get('price')?.getError('required')" class="text-danger p-0">
-      Required
-    </p>
-  </div>
-
-  <!-- stock -->
-  <div class="col-12">
-    <label for="stock" class="form-label">Stock</label>
-    <input
-      type="number"
-      class="form-control"
-      formControlName="stock"
-      id="stock"
-      [(ngModel)]="product.stock"
-    />
-  </div>
-
-  <!-- invalid stock -->
-  <div
-    *ngIf="form.get('stock')?.errors && form.get('stock')?.touched && addMode"
-    class="form-text"
-  >
-    <p *ngIf="form.get('stock')?.getError('required')" class="text-danger p-0">
-      Required
-    </p>
-  </div>
-
-  <!-- rating -->
-  <div class="col-12">
-    <label for="rating" class="form-label">Rating</label>
-    <input
-      type="number"
-      class="form-control"
-      formControlName="rating"
-      id="rating"
-      [(ngModel)]="product.rating"
-    />
-  </div>
-
-  <!-- invalid rating -->
-  <div
-    *ngIf="form.get('rating')?.errors && form.get('rating')?.touched && addMode"
-    class="form-text"
-  >
-    <p *ngIf="form.get('rating')?.getError('required')" class="text-danger p-0">
-      Required
-    </p>
-  </div>
-  <!-- description -->
-  <div class="col-md-12">
-    <label for="description" class="form-label">Description</label>
-    <input
-      type="text"
-      class="form-control"
-      formControlName="description"
-      id="description"
-      [(ngModel)]="product.description"
-    />
-  </div>
-  <!-- invalid description -->
-  <div
-    *ngIf="
-      form.get('description')?.errors &&
-      form.get('description')?.touched &&
-      addMode
-    "
-    class="form-text"
-  >
-    <p
-      *ngIf="form.get('description')?.getError('required')"
-      class="text-danger p-0"
+<div>
+  <form class="row g-3" [formGroup]="form" (ngSubmit)="onSubmit(form)">
+    <!-- title -->
+    <div class="col-12">
+      <label for="title" class="form-label">Title</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="title"
+        id="title"
+        [(ngModel)]="product.title"
+      />
+    </div>
+    <!-- invalid title -->
+    <div
+      *ngIf="form.get('title')?.errors && form.get('title')?.touched && addMode"
+      class="form-text"
     >
-      Required
-    </p>
-  </div>
-  <!-- brand -->
-  <div class="col-md-12">
-    <label for="brand" class="form-label">Brand</label>
-    <input
-      type="text"
-      class="form-control"
-      formControlName="brand"
-      id="brand"
-      [(ngModel)]="product.brand"
-    />
-  </div>
-
-  <!-- invalid brand -->
-  <div
-    *ngIf="form.get('brand')?.errors && form.get('brand')?.touched && addMode"
-    class="form-text"
-  >
-    <p *ngIf="form.get('brand')?.getError('required')" class="text-danger p-0">
-      Required
-    </p>
-  </div>
-  <!-- category -->
-  <div class="col-md-12">
-    <label for="category" class="form-label">Category</label>
-    <input
-      type="text"
-      class="form-control"
-      formControlName="category"
-      id="category"
-      [(ngModel)]="product!.category"
-    />
-  </div>
-
-  <!-- invalid category -->
-  <div
-    *ngIf="
-      form.get('category')?.errors && form.get('category')?.touched && addMode
-    "
-    class="form-text"
-  >
-    <p
-      *ngIf="form.get('category')?.getError('required')"
-      class="text-danger p-0"
+      <p
+        *ngIf="form.get('title')?.getError('required')"
+        class="text-danger p-0"
+      >
+        Required
+      </p>
+    </div>
+    <!-- price -->
+    <div class="col-12">
+      <label for="Price" class="form-label">Price</label>
+      <input
+        type="number"
+        class="form-control"
+        formControlName="price"
+        id="Price"
+        [(ngModel)]="product.price"
+      />
+    </div>
+    <!-- invalid price -->
+    <div
+      *ngIf="form.get('price')?.errors && form.get('price')?.touched && addMode"
+      class="form-text"
     >
-      Required
-    </p>
-  </div>
+      <p
+        *ngIf="form.get('price')?.getError('required')"
+        class="text-danger p-0"
+      >
+        Required
+      </p>
+    </div>
 
-  <div class="col-12">
-    <button type="submit" [disabled]="form.invalid" class="btn btn-primary">
-      Submit
-    </button>
-  </div>
-  <div class="col-12 bg-light text-success text-center" *ngIf="success">
-    <p>Send Successfully</p>
-  </div>
-</form>
+    <!-- stock -->
+    <div class="col-12">
+      <label for="stock" class="form-label">Stock</label>
+      <input
+        type="number"
+        class="form-control"
+        formControlName="stock"
+        id="stock"
+        [(ngModel)]="product.stock"
+      />
+    </div>
+
+    <!-- invalid stock -->
+    <div
+      *ngIf="form.get('stock')?.errors && form.get('stock')?.touched && addMode"
+      class="form-text"
+    >
+      <p
+        *ngIf="form.get('stock')?.getError('required')"
+        class="text-danger p-0"
+      >
+        Required
+      </p>
+    </div>
+
+    <!-- rating -->
+    <div class="col-12">
+      <label for="rating" class="form-label">Rating</label>
+      <input
+        type="number"
+        class="form-control"
+        formControlName="rating"
+        id="rating"
+        [(ngModel)]="product.rating"
+      />
+    </div>
+
+    <!-- invalid rating -->
+    <div
+      *ngIf="
+        form.get('rating')?.errors && form.get('rating')?.touched && addMode
+      "
+      class="form-text"
+    >
+      <p
+        *ngIf="form.get('rating')?.getError('required')"
+        class="text-danger p-0"
+      >
+        Required
+      </p>
+    </div>
+    <!-- description -->
+    <div class="col-md-12">
+      <label for="description" class="form-label">Description</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="description"
+        id="description"
+        [(ngModel)]="product.description"
+      />
+    </div>
+    <!-- invalid description -->
+    <div
+      *ngIf="
+        form.get('description')?.errors &&
+        form.get('description')?.touched &&
+        addMode
+      "
+      class="form-text"
+    >
+      <p
+        *ngIf="form.get('description')?.getError('required')"
+        class="text-danger p-0"
+      >
+        Required
+      </p>
+    </div>
+    <!-- brand -->
+    <div class="col-md-12">
+      <label for="brand" class="form-label">Brand</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="brand"
+        id="brand"
+        [(ngModel)]="product.brand"
+      />
+    </div>
+
+    <!-- invalid brand -->
+    <div
+      *ngIf="form.get('brand')?.errors && form.get('brand')?.touched && addMode"
+      class="form-text"
+    >
+      <p
+        *ngIf="form.get('brand')?.getError('required')"
+        class="text-danger p-0"
+      >
+        Required
+      </p>
+    </div>
+    <!-- category -->
+    <div class="col-md-12">
+      <label for="category" class="form-label">Category</label>
+      <input
+        type="text"
+        class="form-control"
+        formControlName="category"
+        id="category"
+        [(ngModel)]="product!.category"
+      />
+    </div>
+
+    <!-- invalid category -->
+    <div
+      *ngIf="
+        form.get('category')?.errors && form.get('category')?.touched && addMode
+      "
+      class="form-text"
+    >
+      <p
+        *ngIf="form.get('category')?.getError('required')"
+        class="text-danger p-0"
+      >
+        Required
+      </p>
+    </div>
+
+    <div class="col-12">
+      <button type="submit" [disabled]="form.invalid" class="btn btn-primary">
+        Submit
+      </button>
+    </div>
+    <div class="col-12 bg-light text-success text-center" *ngIf="success">
+      <p>Send Successfully</p>
+    </div>
+  </form>
+</div>
