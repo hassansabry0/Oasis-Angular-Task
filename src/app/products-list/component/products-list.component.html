@@ -1,0 +1,24 @@
+<div class="my-5 d-flex justify-content-center" *ngIf="isLoading">
+  <app-spinner></app-spinner>
+</div>
+
+<div class="row" *ngIf="!isLoading">
+  <div
+    class="col-md-4 col-sm-12 my-4 bg-light"
+    *ngFor="
+      let product of products | paginate: { itemsPerPage: 6, currentPage: page }
+    "
+  >
+    <app-card [product]="product" (deleteProduct)="delete($event)"></app-card>
+  </div>
+  <pagination-controls
+    class="text-center p-2 my-4"
+    (pageChange)="page = $event"
+    previousLabel="Previous"
+    nextLabel="Next"
+    screenReaderPaginationLabel="Pagination"
+    screenReaderPageLabel="page"
+    screenReaderCurrentLabel="You're on page"
+  >
+  </pagination-controls>
+</div>

@@ -1,0 +1,51 @@
+<
+<div class="my-5 d-flex justify-content-center" *ngIf="isLoading">
+  <app-spinner></app-spinner>
+</div>
+<div class="row my-3 gx-5" *ngIf="!isLoading">
+  <div
+    class="col-12 col-md-4 p-2 border border-dark rounded-2 d-flex justify-content-center align-items-center flex-wrap"
+  >
+    <img
+      *ngFor="let image of product.images"
+      class="w-50 p-2"
+      [src]="image"
+      alt=""
+    />
+  </div>
+  <div class="col-12 col-md-8 d-flex justify-content-center h-100">
+    <div class="card w-50">
+      <div class="card-body">
+        <h5 class="card-title fw-bold">Description</h5>
+        <p class="card-text">
+          {{ product.description }}
+        </p>
+      </div>
+
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <span class="fw-bold">Title:</span> {{ product.title }}
+        </li>
+        <li class="list-group-item">
+          <span class="fw-bold">Category:</span> {{ product.category }}
+        </li>
+        <li class="list-group-item">
+          <span class="fw-bold">Brand:</span> {{ product.brand }}
+        </li>
+        <li class="list-group-item">
+          <span class="fw-bold">Price:</span> {{ product.price | currency }}
+        </li>
+        <li class="list-group-item">
+          <span class="fw-bold">Rating:</span> {{ product.rating }}
+        </li>
+        <li class="list-group-item">
+          <span class="fw-bold"> Discount:</span>
+          {{ product.discountPercentage | percent }}
+        </li>
+        <li class="list-group-item">
+          <span class="fw-bold">Stock:</span> {{ product.stock }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

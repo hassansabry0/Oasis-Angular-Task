@@ -1,0 +1,12 @@
+<div class="my-5 d-flex justify-content-center" *ngIf="isLoading">
+  <app-spinner></app-spinner>
+</div>
+
+<div class="row" *ngIf="!isLoading">
+  <div
+    class="col-md-4 col-sm-12 my-4 bg-light"
+    *ngFor="let product of products"
+  >
+    <app-card [product]="product" (deleteProduct)="delete($event)"></app-card>
+  </div>
+</div>
